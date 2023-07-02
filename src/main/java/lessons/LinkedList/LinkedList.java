@@ -44,19 +44,19 @@ public class LinkedList {
     }
 
     public boolean remove(int _value) {
+        Node node = this.head;
         if (this.head == null) {
             return false;
         }
 
         if (this.head.value == _value) {
-            Node newHead = this.head.next;
+            node = node.next;
             this.head.next = null;
-            this.head = newHead;
+            this.head = node;
             this.size--;
             return true;
         }
 
-        Node node = this.head;
         while (node != null && node != this.tail) {
             if (node.next.value == _value) {
                 if (node.next == this.tail) {
