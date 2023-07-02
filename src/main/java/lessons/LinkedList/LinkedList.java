@@ -10,6 +10,7 @@ public class LinkedList {
     public LinkedList() {
         head = null;
         tail = null;
+        size = 0;
     }
 
     public void addInTail(Node item) {
@@ -45,8 +46,11 @@ public class LinkedList {
 
     public boolean remove(int _value) {
         Node node = this.head;
-        if (this.head == null) {
-            return false;
+        if (this.head == this.tail && this.head.value == _value) {
+            this.head = null;
+            this.tail = null;
+            this.size--;
+            return true;
         }
 
         if (this.head.value == _value) {
