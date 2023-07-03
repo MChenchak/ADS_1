@@ -135,6 +135,11 @@ public class LinkedList {
     }
 
     public void insertAfter(Node _nodeAfter, Node _nodeToInsert) {
+        if (this.size == 0) {
+            addInTail(_nodeToInsert);
+            return;
+        }
+
         if (_nodeAfter == null) {
             insertFirst(_nodeToInsert);
             return;
