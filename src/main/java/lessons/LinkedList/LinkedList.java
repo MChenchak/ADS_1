@@ -46,6 +46,11 @@ public class LinkedList {
 
     public boolean remove(int _value) {
         Node node = this.head;
+
+        if (this.size == 0) {
+            return false;
+        }
+
         if (this.head == this.tail && this.head.value == _value) {
             this.head = null;
             this.tail = null;
