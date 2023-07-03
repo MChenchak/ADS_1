@@ -85,6 +85,14 @@ public class LinkedList {
     public void removeAll(int _value) {
         Node node = this.head;
         Node prev = null;
+
+        if (this.size == 1 && this.head.value == _value) {
+            this.head = null;
+            this.tail = null;
+            this.size--;
+            return;
+        }
+
         while (node != null) {
             if (node.value == _value) {
                 if (node == this.head) {
