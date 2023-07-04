@@ -1,6 +1,6 @@
 package lessons.LinkedList2;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class LinkedList2 {
     public Node head;
@@ -109,6 +109,35 @@ public class LinkedList2 {
 
         // если _nodeAfter = null
         // добавьте новый элемент первым в списке
+        if (this.size == 0) {
+            addInTail(_nodeToInsert);
+            return;
+        }
+
+        if (_nodeAfter == null) {
+            insertFirst(_nodeToInsert);
+            return;
+        }
+
+        if (_nodeAfter == this.tail) {
+            addInTail(_nodeToInsert);
+            return;
+        }
+
+        Node next = _nodeAfter.next;
+        _nodeAfter.next = _nodeToInsert;
+        _nodeToInsert.next = next;
+        _nodeToInsert.prev = _nodeAfter;
+        next.prev = _nodeToInsert;
+        this.size++;
+    }
+
+    private void insertFirst(Node nodeToInsert) {
+        Node newHead = nodeToInsert;
+        newHead.next = this.head;
+        this.head.prev = nodeToInsert;
+        this.head = newHead;
+        size++;
     }
 
     private void unlink(Node node) {
@@ -125,7 +154,6 @@ public class LinkedList2 {
 
         if (next == null) {
             this.tail = prev;
-//            this.tail.next = null;
         } else {
             next.prev = prev;
             node.next = null;
