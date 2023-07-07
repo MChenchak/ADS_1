@@ -85,7 +85,7 @@ public class DynArray<T> {
     }
 
     private void rangeCheck(int index) {
-        if (index > capacity || index < 0)
+        if (index > count || index < 0)
             throw new IndexOutOfBoundsException("Index out of bound");
     }
 

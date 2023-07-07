@@ -256,4 +256,14 @@ class DynArrayTest {
         assertEquals(21, array.capacity);
         assertEquals(15, array.count);
     }
+
+    @Test
+    @DisplayName("Удаления из недопустимой позиции")
+    void removeFromWrongIndex() {
+        DynArray array = new DynArray<>(Integer.class);
+        array.append(1);
+        array.append(2);
+
+        assertThrows(IndexOutOfBoundsException.class, () -> array.remove(3));
+    }
 }
