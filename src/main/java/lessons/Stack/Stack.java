@@ -1,6 +1,6 @@
 package lessons.Stack;
 
-import java.util.*;
+import java.util.ArrayList;
 
 public class Stack<T> {
 
@@ -19,7 +19,7 @@ public class Stack<T> {
             return null;
         }
 
-        return arr.remove(0);
+        return arr.remove(arr.size() - 1);
     }
 
     public void push(T val) {
@@ -29,7 +29,7 @@ public class Stack<T> {
     public T peek() {
         if (arr.isEmpty())
             return null;
-        return arr.get(arr.size()-1);
+        return arr.get(arr.size() - 1);
     }
 }
 

@@ -44,7 +44,7 @@ class StackTest {
 
         Integer pop = stack.pop();
 
-        assertEquals(1, pop);
+        assertEquals(4, pop);
         assertEquals(3, stack.size());
     }
 
@@ -62,10 +62,10 @@ class StackTest {
 
     @Test
     void isBalanced() {
-        String str = "(()()(()";
+        String str = "(()()(()))";
         BalancedBrackets b = new BalancedBrackets();
         boolean balanced = b.isBalanced(str);
 
-        assertFalse(balanced);
+        assertTrue(balanced);
     }
 }
