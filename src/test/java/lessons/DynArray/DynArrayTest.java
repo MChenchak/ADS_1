@@ -118,6 +118,24 @@ class DynArrayTest {
     }
 
     @Test
+    @DisplayName("Добавление элемента в пустой массив")
+    void insertIntoEmptyListAtFirst() {
+        DynArray array = new DynArray<>(Integer.class);
+        array.insert(105, 0);
+
+        Assertions.assertEquals(16, array.capacity);
+        Assertions.assertEquals(1, array.count);
+    }
+
+    @Test
+    @DisplayName("Добавленеи с некорректным индексом")
+    void insertWithWrongIndex() {
+        DynArray array = new DynArray<>(Integer.class);
+
+        assertThrows(IndexOutOfBoundsException.class, () -> array.insert(1,100500));
+    }
+
+    @Test
     @DisplayName("Вставка в конец заполненного массива")
     void InsertIntoFullList() {
         DynArray array = new DynArray<>(Integer.class);

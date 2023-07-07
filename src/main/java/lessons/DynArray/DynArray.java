@@ -50,17 +50,11 @@ public class DynArray<T> {
     }
 
     public void insert(T itm, int index) {
-        if (index == count) {
+        rangeCheck(index);
+
+        if (count == capacity) {
             makeArray(capacity * 2);
-            array[count] = itm;
-            count++;
-            return;
         }
-
-        checkCapacityRate();
-
-        if (count == capacity)
-            makeArray(capacity * 2);
         System.arraycopy(array, index, array, index + 1, count - index);
         array[index] = itm;
         count++;
@@ -91,7 +85,7 @@ public class DynArray<T> {
     }
 
     private void rangeCheck(int index) {
-        if (index > count || index < 0)
+        if (index > capacity || index < 0)
             throw new IndexOutOfBoundsException("Index out of bound");
     }
 
