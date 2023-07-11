@@ -1,6 +1,6 @@
 package lessons.Queeu;
 
-import java.util.*;
+import java.util.Stack;
 
 public class Queue<T> {
 
@@ -22,14 +22,15 @@ public class Queue<T> {
             return null;
         }
 
-        if (stack2.isEmpty()) {
-            while (!stack1.isEmpty()) {
-                item = stack1.pop();
-                stack2.push(item);
-            }
+        if (!stack2.isEmpty()) {
+            return stack2.pop();
         }
-        item = stack2.pop();
-        return item;
+
+        while (!stack1.isEmpty()) {
+            item = stack1.pop();
+            stack2.push(item);
+        }
+        return stack2.pop();
     }
 
     public int size() {
