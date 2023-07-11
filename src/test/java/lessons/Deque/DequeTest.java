@@ -48,7 +48,7 @@ class DequeTest {
     void removeFromEmptyQTail() {
         Deque<Integer> q = new Deque<>();
 
-        assertThrows(IndexOutOfBoundsException.class, ()->q.removeFront());
+        assertNull(q.removeTail());
     }
 
     @Test
@@ -56,6 +56,6 @@ class DequeTest {
     void removeFromEmptyHead() {
         Deque<Integer> q = new Deque<>();
 
-        assertThrows(IndexOutOfBoundsException.class, ()->q.removeFront());
+        assertNull(q.removeFront());
     }
 }
