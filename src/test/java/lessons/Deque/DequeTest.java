@@ -3,6 +3,8 @@ package lessons.Deque;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.NoSuchElementException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class DequeTest {
@@ -39,5 +41,21 @@ class DequeTest {
 
         assertEquals(3, q.removeTail());
         assertEquals(2, q.size());
+    }
+
+    @Test
+    @DisplayName("Удаление из хвоста хвоста пустой очереди")
+    void removeFromEmptyQTail() {
+        Deque<Integer> q = new Deque<>();
+
+        assertThrows(NoSuchElementException.class, ()->q.removeFront());
+    }
+
+    @Test
+    @DisplayName("Удаление из головы пустой очереди")
+    void removeFromEmptyHead() {
+        Deque<Integer> q = new Deque<>();
+
+        assertThrows(NoSuchElementException.class, ()->q.removeFront());
     }
 }

@@ -25,10 +25,18 @@ public class Deque<T> {
     }
 
     public T removeFront() {
+        if (elements.size() == 0) {
+            throw new NoSuchElementException();
+        }
+
         return elements.remove(0);
     }
 
     public T removeTail() {
+        if (elements.size() == 0) {
+            throw new NoSuchElementException();
+        }
+
         return elements.remove(elements.size()-1);
     }
 
