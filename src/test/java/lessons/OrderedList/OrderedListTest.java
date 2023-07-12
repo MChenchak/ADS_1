@@ -92,6 +92,16 @@ class OrderedListTest {
     }
 
     @Test
+    void deleteFromEmpty() {
+        OrderedList<Integer> list = new OrderedList<>(true);
+
+        list.delete(5);
+
+        assertEquals(0, list.count());
+        assertNull(list.find(5));
+    }
+
+    @Test
     void getAll() {
         OrderedList<Integer> list = new OrderedList<>(true);
         list.add(1);

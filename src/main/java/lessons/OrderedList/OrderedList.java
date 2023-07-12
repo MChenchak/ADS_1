@@ -1,6 +1,6 @@
 package lessons.OrderedList;
 
-import java.util.*;
+import java.util.ArrayList;
 
 class Node<T> {
     public T value;
@@ -75,6 +75,10 @@ public class OrderedList<T> {
         Node<T> node = this.head;
         while (node != null && compare(val, node.value) > 0) {
             node = node.next;
+        }
+
+        if (node == null) {
+            return null;
         }
 
         if (compare(val, node.value) == 0) {
