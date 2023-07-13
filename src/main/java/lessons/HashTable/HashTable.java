@@ -62,12 +62,18 @@ public class HashTable {
 
     public int find(String value) {
         int hash = hashFun(value);
-        while (value != slots[hash] && (hash + step) < size) {
-            hash = hash + step;
-        }
 
         if (value == slots[hash]) {
             return hash;
+        }
+
+        hash = 0;
+
+        while (hash < size) {
+            if (value == slots[hash]) {
+                return hash;
+            }
+            hash ++;
         }
 
         return -1;

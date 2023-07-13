@@ -40,11 +40,14 @@ class HashTableTest {
 
     @Test
     void find() {
-        HashTable hashTable = new HashTable(5, 3);
-        String s = "str";
+        HashTable hashTable = new HashTable(17, 3);
+        String s = "str"; // hash = 5
 
-        hashTable.put(s);
-        hashTable.put(s);
+        for (int i = 0; i < 17; i++) {
+            hashTable.put("val");
+        }
+
+        hashTable.slots[3] = s;
 
         int i = hashTable.find(s);
 
@@ -59,10 +62,7 @@ class HashTableTest {
             hashTable.put("val");
         }
 
-
         assertEquals(17, hashTable.count);
-
-
 
     }
 
