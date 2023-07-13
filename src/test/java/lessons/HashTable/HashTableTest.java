@@ -49,7 +49,7 @@ class HashTableTest {
 
         int i = hashTable.find(s);
 
-        assertNotEquals(0, i);
+        assertTrue(i >= 0);
     }
 
 }

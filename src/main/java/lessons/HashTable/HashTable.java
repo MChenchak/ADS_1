@@ -1,7 +1,5 @@
 package lessons.HashTable;
 
-import java.util.Objects;
-
 public class HashTable {
     public int size;
     public int step;
@@ -53,11 +51,11 @@ public class HashTable {
 
     public int find(String value) {
         int hash = hashFun(value);
-        while (!Objects.equals(value, slots[hash]) && (hash + step) < size) {
+        while (value != slots[hash] && (hash + step) < size) {
             hash = hash + step;
         }
 
-        if (!Objects.equals(value, slots[hash])) {
+        if (value == slots[hash]) {
             return hash;
         }
 
