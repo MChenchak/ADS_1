@@ -4,6 +4,7 @@ public class HashTable {
     public int size;
     public int step;
     public String[] slots;
+    public int count;
 
     public HashTable(int sz, int stp) {
         size = sz;
@@ -28,9 +29,14 @@ public class HashTable {
     public int seekSlot(String value) {
         int hash = hashFun(value);
 
-        while (slots[hash] != null && (hash + step) < size) {
+        while (slots[hash] != null && hash <= size) {
             hash = hash + step;
+            if (hash >= size) {
+                hash = 0;
+                step = 1;
+            }
         }
+
 
         if (slots[hash] == null) {
             return hash;
@@ -40,9 +46,14 @@ public class HashTable {
     }
 
     public int put(String value) {
+        if (size == count) {
+            return -1;
+        }
+
         int slot = seekSlot(value);
         if (slot > -1) {
             slots[slot] = value;
+            count++;
             return slot;
         }
 

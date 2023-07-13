@@ -2,8 +2,7 @@ package lessons.HashTable;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class HashTableTest {
 
@@ -50,6 +49,21 @@ class HashTableTest {
         int i = hashTable.find(s);
 
         assertTrue(i >= 0);
+    }
+
+    @Test
+    void whenDataMoreThanSize() {
+        HashTable hashTable = new HashTable(17, 3);
+
+        for (int i = 0; i < 18; i++) {
+            hashTable.put("val");
+        }
+
+
+        assertEquals(17, hashTable.count);
+
+
+
     }
 
 }
