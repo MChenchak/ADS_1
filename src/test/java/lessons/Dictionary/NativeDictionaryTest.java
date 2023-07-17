@@ -33,6 +33,19 @@ class NativeDictionaryTest {
     }
 
     @Test
+    void isKeyWhenNull() {
+        NativeDictionary<String> dic = new NativeDictionary<>(17, String.class);
+        int h = dic.hashFun("key1");
+
+        dic.slots[0]  = "key1";
+        dic.values[0] = "val1";
+
+        boolean key1 = dic.isKey(null);
+
+        assertTrue(key1);
+    }
+
+    @Test
     void get() {
         NativeDictionary<String> dic = new NativeDictionary<>(10, String.class);
 

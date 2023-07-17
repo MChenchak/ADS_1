@@ -31,9 +31,6 @@ class NativeDictionary<T> {
     }
 
     public boolean isKey(String key) {
-        if (key == null) {
-            return false;
-        }
         for (String s : slots) {
             if (s == key) {
                 return true;
