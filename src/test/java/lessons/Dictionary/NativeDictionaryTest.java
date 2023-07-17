@@ -48,7 +48,7 @@ class NativeDictionaryTest {
 
 
     @Test
-    void getWhenAllTheSame() {
+    void putInFullDict() {
         NativeDictionary<String> dic = new NativeDictionary<>(5, String.class);
 
         int h = dic.hashFun("key1");
@@ -60,11 +60,7 @@ class NativeDictionaryTest {
         dic.put("key1", "val1");
         dic.put("key1", "val1");
         dic.put("key1", "val1");
-        dic.put("key1", "val1");
-        dic.put("key1", "val1");
-        dic.put("key1", "val1");
-        dic.put("key1", "val1");
-
+        dic.put("key222", "val222");
 
     }
 }
