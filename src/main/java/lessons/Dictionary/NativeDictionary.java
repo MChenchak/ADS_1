@@ -47,6 +47,10 @@ class NativeDictionary<T> {
             throw new NullPointerException();
         }
 
+        if (size == count) {
+            return;
+        }
+
         int slot = seekSlot(key);
         if (slot > -1) {
             slots[slot] = key;

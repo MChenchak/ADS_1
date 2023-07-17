@@ -45,4 +45,26 @@ class NativeDictionaryTest {
         assertEquals("val1", val);
         assertNull(nullval);
     }
+
+
+    @Test
+    void getWhenAllTheSame() {
+        NativeDictionary<String> dic = new NativeDictionary<>(5, String.class);
+
+        int h = dic.hashFun("key1");
+
+
+
+        dic.put("key1", "val1");
+        dic.put("key1", "val1");
+        dic.put("key1", "val1");
+        dic.put("key1", "val1");
+        dic.put("key1", "val1");
+        dic.put("key1", "val1");
+        dic.put("key1", "val1");
+        dic.put("key1", "val1");
+        dic.put("key1", "val1");
+
+
+    }
 }
