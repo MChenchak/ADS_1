@@ -37,7 +37,6 @@ public class HashTable {
             }
         }
 
-
         if (slots[hash] == null) {
             return hash;
         }
