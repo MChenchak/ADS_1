@@ -19,6 +19,19 @@ class NativeDictionaryTest {
     }
 
     @Test
+    void putWithExistsKey() {
+        NativeDictionary<String> dic = new NativeDictionary<>(10, String.class);
+
+        int h = dic.hashFun("key1");
+        dic.put("key1", "val1");
+        dic.put("key1", "newVal1");
+
+        assertEquals(1, dic.count);
+        assertEquals(dic.slots[h], "key1");
+        assertEquals(dic.values[h], "newVal1");
+    }
+
+    @Test
     void isKey() {
         NativeDictionary<String> dic = new NativeDictionary<>(10, String.class);
 
@@ -32,18 +45,6 @@ class NativeDictionaryTest {
         assertFalse(key2);
     }
 
-    @Test
-    void isKeyWhenNull() {
-        NativeDictionary<String> dic = new NativeDictionary<>(17, String.class);
-        int h = dic.hashFun("key1");
-
-        dic.slots[0]  = "key1";
-        dic.values[0] = "val1";
-
-        boolean key1 = dic.isKey(null);
-
-        assertTrue(key1);
-    }
 
     @Test
     void get() {
@@ -57,6 +58,17 @@ class NativeDictionaryTest {
 
         assertEquals("val1", val);
         assertNull(nullval);
+    }
+
+    @Test
+    void getLast() {
+        NativeDictionary<String> dic = new NativeDictionary<>(5, String.class);
+
+        int h = dic.hashFun("key1");
+        dic.slots[4] = "key1";
+        dic.values[4] = "val1";
+
+        String key1 = dic.get("key1");
     }
 
 

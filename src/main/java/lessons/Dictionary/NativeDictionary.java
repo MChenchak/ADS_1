@@ -35,20 +35,21 @@ class NativeDictionary<T> {
     }
 
     public void put(String key, T value) {
-        if (value == null) {
-            throw new NullPointerException();
-        }
 
         if (size == count) {
             return;
         }
 
         int slot = seekSlot(key);
+        if (key != slots[slot]) {
+            count++;
+        }
         if (slot > -1) {
             slots[slot] = key;
             values[slot] = value;
-            count++;
         }
+
+
     }
 
     public T get(String key) {
@@ -70,8 +71,12 @@ class NativeDictionary<T> {
         return null;
     }
 
-    private int seekSlot(String value) {
-        int hash = hashFun(value);
+    private int seekSlot(String key) {
+        int hash = hashFun(key);
+
+        if (slots[hash] == key) {
+            return hash;
+        }
 
         while (slots[hash] != null && hash <= size) {
             hash = hash + step;
