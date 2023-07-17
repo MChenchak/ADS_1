@@ -31,12 +31,7 @@ class NativeDictionary<T> {
     }
 
     public boolean isKey(String key) {
-        for (String s : slots) {
-            if (s == key) {
-                return true;
-            }
-        }
-        return false;
+        return get(key) != null;
     }
 
     public void put(String key, T value) {
@@ -69,7 +64,7 @@ class NativeDictionary<T> {
             if (key == slots[hash]) {
                 return values[hash];
             }
-            hash ++;
+            hash++;
         }
 
         return null;
