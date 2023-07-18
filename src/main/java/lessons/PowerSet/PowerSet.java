@@ -52,12 +52,16 @@ public class PowerSet {
             return new PowerSet();
         }
 
-        for (String s : set2.table) {
-            if (!get(s)) {
-                this.put(s);
-            }
+        PowerSet union = new PowerSet();
+
+        for (String s : this.table) {
+            union.put(s);
         }
-        return this;
+
+        for (String s : set2.table) {
+            union.put(s);
+        }
+        return union;
     }
 
     public PowerSet difference(PowerSet set2) {

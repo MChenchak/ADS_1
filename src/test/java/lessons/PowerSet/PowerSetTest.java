@@ -175,6 +175,54 @@ class PowerSetTest {
     }
 
     @Test
+    void union2() {
+        PowerSet set1 = new PowerSet();
+        set1.put("val1");
+        set1.put("val2");
+        set1.put("val3");
+
+        PowerSet set2 = new PowerSet();
+        set2.put("val1");
+        set2.put("val11");
+        set2.put("val3");
+
+        PowerSet union = set2.union(set1);
+
+        assertEquals(4, union.size());
+    }
+
+    @Test
+    void emptyUnionNotEmpty() {
+        PowerSet set1 = new PowerSet();
+        set1.put("val1");
+        set1.put("val11");
+        set1.put("val3");
+
+        PowerSet set2 = new PowerSet();
+        set2.put("val1");
+        set2.put("val11");
+        set2.put("val3");
+
+        PowerSet union = set1.union(set2);
+
+        assertEquals(3, union.size());
+    }
+
+    @Test
+    void notEmptyUnionEmpty() {
+        PowerSet set1 = new PowerSet();
+
+        PowerSet set2 = new PowerSet();
+        set2.put("val1");
+        set2.put("val11");
+        set2.put("val3");
+
+        PowerSet union = set2.union(set1);
+
+        assertEquals(3, union.size());
+    }
+
+    @Test
     void unionWhenOneSetIsEmpty() {
         PowerSet set1 = new PowerSet();
         set1.put("val1");
