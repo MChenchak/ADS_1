@@ -11,10 +11,17 @@ class PowerSetTest {
     void getExistsFromNotEmpty() {
         PowerSet set = new PowerSet();
         set.put("val1");
+        set.put("val2");
+        set.put(null);
 
-        boolean get = set.get("val1");
+        boolean get1 = set.get("val1");
+        boolean get2 = set.get("val2");
+        boolean get3 = set.get(null);
 
-        assertTrue(get);
+        assertTrue(get1);
+        assertTrue(get2);
+        assertFalse(get3);
+        assertEquals(2, set.size());
     }
 
     @Test
@@ -23,8 +30,11 @@ class PowerSetTest {
         set.put("val1");
 
         boolean get = set.get("val123");
+        boolean getNull = set.get(null);
 
         assertFalse(get);
+        assertFalse(getNull);
+        assertEquals(1, set.size());
     }
 
     @Test
@@ -32,10 +42,36 @@ class PowerSetTest {
         PowerSet set = new PowerSet();
         set.put("val1");
         set.put(null);
-        set.put(null);
+
+
+        boolean getNull = set.get(null);
+
+        assertFalse(getNull);
+        assertEquals(1, set.size());
+    }
+
+    @Test
+    void getAfterRemove() {
+        PowerSet set = new PowerSet();
+        set.put("val1");
         set.put(null);
 
-        boolean get = set.get(null);
+        boolean remove = set.remove("val1");
+        boolean get = set.get("val1");
+
+        assertTrue(remove);
+        assertFalse(get);
+        assertEquals(0, set.size());
+    }
+
+    @Test
+    void put20K() {
+        PowerSet set = new PowerSet();
+        for (int i = 1; i < 20001; i++) {
+            set.put(String.valueOf(i));
+        }
+        set.put("val1");
+        boolean get = set.get("1");
 
         assertTrue(get);
     }

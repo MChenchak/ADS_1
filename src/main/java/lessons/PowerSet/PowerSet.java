@@ -12,7 +12,7 @@ public class PowerSet {
     }
 
     public void put(String value) {
-        if (get(value)) {
+        if (value == null || get(value)) {
             return;
         }
         table.add(value);
@@ -24,7 +24,7 @@ public class PowerSet {
         }
 
         for (String s : table) {
-            if (s == value) {
+            if (s.equals(value)) {
                 return true;
             }
         }
