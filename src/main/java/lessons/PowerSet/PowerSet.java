@@ -44,12 +44,12 @@ public class PowerSet {
             }
         }
 
-        return resultSet.size() > 0 ? resultSet : null;
+        return resultSet.size() > 0 ? resultSet : new PowerSet();
     }
 
     public PowerSet union(PowerSet set2) {
         if (size() == 0 && set2.size() == 0) {
-            return null;
+            return new PowerSet();
         }
 
         for (String s : set2.table) {
@@ -69,7 +69,7 @@ public class PowerSet {
             }
         }
 
-        return resultSet.size() > 0 ? resultSet : null;
+        return resultSet.size() > 0 ? resultSet : new PowerSet();
     }
 
     public boolean isSubset(PowerSet set2) {

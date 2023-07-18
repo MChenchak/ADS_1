@@ -154,7 +154,7 @@ class PowerSetTest {
 
         PowerSet intersection = set1.intersection(set2);
 
-        assertNull(intersection);
+        assertEquals(0, intersection.size());
     }
 
     @Test
@@ -194,7 +194,7 @@ class PowerSetTest {
         PowerSet set2 = new PowerSet();
 
         PowerSet union = set1.union(set2);
-        assertNull(union);
+        assertEquals(0, union.size());
     }
 
 
@@ -282,6 +282,15 @@ class PowerSetTest {
         PowerSet difference = set1.difference(paramSet);
 
         assertTrue(difference.get("val5"));
+    }
+
+    @Test
+    void size() {
+        PowerSet set1 = new PowerSet();
+        set1.put("1");
+        set1.remove("1");
+        set1.remove("1");
+        assertEquals(0, set1.size());
     }
 
 }
