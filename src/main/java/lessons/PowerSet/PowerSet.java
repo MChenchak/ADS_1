@@ -1,7 +1,5 @@
 package lessons.PowerSet;
 
-import lessons.HashTable.HashTable;
-
 public class PowerSet {
     private HashTable table;
 
