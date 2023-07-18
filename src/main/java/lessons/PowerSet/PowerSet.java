@@ -1,7 +1,7 @@
 package lessons.PowerSet;
 
 public class PowerSet {
-    private HashTable table;
+    public HashTable table;
 
     public PowerSet() {
         table = new HashTable(20000, 10);
@@ -51,10 +51,17 @@ public class PowerSet {
             }
         }
 
-        return resultSet.size() > 0 ? resultSet : null;
+        if (resultSet.size() > 0) {
+            return resultSet;
+        }
+
+        return null;
     }
 
     public PowerSet union(PowerSet set2) {
+        if (size() == 0 && set2.size() == 0) {
+            return null;
+        }
         String[] second = set2.table.slots;
 
         for (String s : second) {
@@ -74,7 +81,11 @@ public class PowerSet {
             }
         }
 
-        return resultSet.size() > 0 ? resultSet : null;
+        if (resultSet.size() > 0) {
+            return resultSet;
+        }
+
+        return null;
     }
 
     public boolean isSubset(PowerSet set2) {

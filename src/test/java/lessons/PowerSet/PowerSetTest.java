@@ -120,6 +120,16 @@ class PowerSetTest {
     }
 
     @Test
+    void unionWhenBothEmpty() {
+        PowerSet set1 = new PowerSet();
+        PowerSet set2 = new PowerSet();
+
+        PowerSet union = set1.union(set2);
+        assertNull(union);
+    }
+
+
+    @Test
     @DisplayName("все элементы параметра входят в текущее множество")
     void isSubset1() {
         PowerSet set1 = new PowerSet();
