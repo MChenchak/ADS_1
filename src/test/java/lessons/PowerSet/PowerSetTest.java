@@ -8,6 +8,39 @@ import static org.junit.jupiter.api.Assertions.*;
 class PowerSetTest {
 
     @Test
+    void getExistsFromNotEmpty() {
+        PowerSet set = new PowerSet();
+        set.put("val1");
+
+        boolean get = set.get("val1");
+
+        assertTrue(get);
+    }
+
+    @Test
+    void getNotExistsFromNotEmpty() {
+        PowerSet set = new PowerSet();
+        set.put("val1");
+
+        boolean get = set.get("val123");
+
+        assertFalse(get);
+    }
+
+    @Test
+    void getNullFromNotEmpty() {
+        PowerSet set = new PowerSet();
+        set.put("val1");
+        set.put(null);
+        set.put(null);
+        set.put(null);
+
+        boolean get = set.get(null);
+
+        assertTrue(get);
+    }
+
+    @Test
     void putNewInEmpty() {
         PowerSet set = new PowerSet();
         set.put("val1");
