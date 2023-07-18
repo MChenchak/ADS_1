@@ -1,21 +1,21 @@
 package lessons.PowerSet;
 
 public class PowerSet {
-    public HashTable table;
+    private List<String> table;
 
     public PowerSet() {
-        table = new HashTable(20000, 10);
+        table = new ArrayList<>(200000);
     }
 
     public int size() {
-        return table.count;
+        return table.size();
     }
 
     public void put(String value) {
         if (value == null || get(value)) {
             return;
         }
-        table.put(value);
+        table.add(value);
     }
 
     public boolean get(String value) {
@@ -23,48 +23,36 @@ public class PowerSet {
             return false;
         }
 
-        for (String s : table.slots) {
+        for (String s : table) {
             if (s == value) {
                 return true;
             }
         }
-
         return false;
     }
 
     public boolean remove(String value) {
-        int index = table.find(value);
-        if (index < 0) {
-            return false;
-        }
-
-        table.slots[index] = null;
-        table.count--;
-        return true;
+        return table.remove(value);
     }
 
     public PowerSet intersection(PowerSet set2) {
         PowerSet resultSet = new PowerSet();
-        for (String s : table.slots) {
+
+        for (String s : table) {
             if (set2.get(s)) {
                 resultSet.put(s);
             }
         }
 
-        if (resultSet.size() > 0) {
-            return resultSet;
-        }
-
-        return null;
+        return resultSet.size() > 0 ? resultSet : null;
     }
 
     public PowerSet union(PowerSet set2) {
         if (size() == 0 && set2.size() == 0) {
             return null;
         }
-        String[] second = set2.table.slots;
 
-        for (String s : second) {
+        for (String s : set2.table) {
             if (!get(s)) {
                 this.put(s);
             }
@@ -75,17 +63,13 @@ public class PowerSet {
     public PowerSet difference(PowerSet set2) {
         PowerSet resultSet = new PowerSet();
 
-        for (String s : table.slots) {
+        for (String s : table) {
             if (!set2.get(s)) {
                 resultSet.put(s);
             }
         }
 
-        if (resultSet.size() > 0) {
-            return resultSet;
-        }
-
-        return null;
+        return resultSet.size() > 0 ? resultSet : null;
     }
 
     public boolean isSubset(PowerSet set2) {
@@ -93,15 +77,11 @@ public class PowerSet {
             return false;
         }
 
-        String[] second = set2.table.slots;
-
-        for (String s : second) {
+        for (String s : set2.table) {
             if (!get(s)) {
                 return false;
             }
         }
         return true;
     }
-
 }
-
